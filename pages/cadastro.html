@@ -3,38 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
-    <title>HealthTrack - Login</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/index.js"></script>
+    <title>HealthTrack - Cadastro</title>
 </head>
 <body>
     
     <div class="banner-image"></div>
     <h1 class="HeaderApp" >HealthTrack App</h1>
     <div class="login-container">
-        <h2>Login</h2>    
-        <form>
+        <h2> Cadastre-se </h2>    
+        <form id="cadastro-form">
             <div class="login-radio">
 
                 <div>
-                    <input type="radio" id="medico" name="seletor" value="medico">
+                    <input type="radio" id="medico" name="seletor-cadastro" value="medico" onchange="changeCadastro()" >
                     <label for="medico">Médico</label><br> 
                 </div>
                 <div>
-                    <input type="radio" id="paciente" name="seletor"value="paciente" checked>
+                    <input type="radio" id="paciente" name="seletor-cadastro" value="paciente" checked onchange="changeCadastro()">
                     <label for="paciente">Paciente</label>
                 </div>
             
             </div>
 
-            <input class="login-container-input" onchange="validateEmail()" type="email" id="email" placeholder="Email" required>        
+            <input class="login-container-input" type="text" id="nome" placeholder="Name" required>        
+            <input class="login-container-input" type="text" id="cpf" onchange="validaCPF()"  placeholder="CPF" required>
+            <input class="login-container-input" type="number" id="crm" placeholder="CRM" hidden>        
+            <input class="login-container-input" type="text" id="hospital" placeholder="Hospital" required>       
+            <input class="login-container-input" type="email" id="email-cadastro" placeholder="Email" required>       
             <input class="login-container-input" type="password" id="senha" placeholder="Password" required>        
-            <button type="button" onclick="login()"  id="submit" disabled>Login</button>    
+            <button type="submit" id="submit">Cadastre-se</button>    
         </form>
     </div>
 
     <div class="register-container">
-        <button onclick="window.location.href = 'pages/cadastro.html'"><u> cadastre-se</u></button>
+        <button onclick="window.location.href = '/index.html'"><u> Login </u></button>
     </div>
 
 
@@ -52,6 +56,7 @@
         appId: "1:176300653526:web:4ebbf87ecfcda30e730277"
       };
       firebase.initializeApp(firebaseConfig);
+
 
 </script>
 
