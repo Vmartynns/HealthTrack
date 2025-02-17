@@ -21,10 +21,13 @@ function validateEmail(){
     const email = document.getElementById("email").value;
     if(!email){
         document.getElementById("submit").disabled = true;
+        document.getElementById("recover-passwd").disabled = true;
     } else if(/^\S+@\S+\.\S+$/.test(email)){
         document.getElementById("submit").disabled = false;
+        document.getElementById("recover-passwd").disabled = false;
     }else{
         document.getElementById("submit").disabled = true;
+        document.getElementById("recover-passwd").disabled = true;
     }
 }
 
@@ -57,4 +60,11 @@ function changeCadastro(){
         document.getElementById("crm").style.display = 'none';
         document.getElementById("crm").required = false;
     }
+}
+
+function recoverPassword(){
+    const email = document.getElementById("email").value;
+    firebase.auth().sendPasswordResetEmail(email).then(() => {
+        alert("Email de recuperação enviado com sucesso, caso não tenha recebido verifique o email digitado");
+    });
 }
