@@ -1,24 +1,20 @@
 function login(){
-    const email = document.getElementById("email").value;
-    const passwd = document.getElementById("senha").value;
+    const email = document.getElementById("email-login").value;
+    const passwd = document.getElementById("senha-login").value;
 
     firebase.auth().signInWithEmailAndPassword(email,passwd).then(response => {
         if(document.querySelector('input[name="seletor"]:checked').value === "medico"){
-            window.location.href = "/pages/medico.html"
+            window.location.href = './pages/home.html'
         } else{
-            window.location.href = "/pages/paciente.html"
+            window.location.href = './pages/home.html'
         }
       }).catch(error =>{
-          console.log("error",alert("Dados de Login inválidos"),location.reload())
+          console.log("error",alert("Dados de Login inválidos"),location.reload());
       });
 }
 
-function teste(){
-    console.log("deu bom");
-}
-
 function validateEmail(){
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email-login").value;
     if(!email){
         document.getElementById("submit").disabled = true;
         document.getElementById("recover-passwd").disabled = true;
@@ -31,40 +27,15 @@ function validateEmail(){
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-	document.getElementById('cadastro-form').addEventListener('submit', function(e) {
-		var cpf = document.getElementById('cpf').value;
-		if (!validaCPF(cpf)) {
-			e.preventDefault();
-			alert('CPF inválido. Verifique o número digitado.');
-			document.getElementById('cpf').focus();
-		}
-	});
-
-	document.getElementById('cpf').addEventListener('input', function(e) {
-		var value = e.target.value;
-		var cpfPattern = value.replace(/\D/g, '')
-							  .replace(/(\d{3})(\d)/, '$1.$2')
-							  .replace(/(\d{3})(\d)/, '$1.$2')
-							  .replace(/(\d{3})(\d)/, '$1-$2')
-							  .replace(/(-\d{2})\d+?$/, '$1');
-		e.target.value = cpfPattern;
-	});
-});
-
-function changeCadastro(){
-    if(document.querySelector('input[name="seletor-cadastro"]:checked').value === "medico"){
-        document.getElementById("crm").style.display = 'block';
-        document.getElementById("crm").required = true;
-    } else{
-        document.getElementById("crm").style.display = 'none';
-        document.getElementById("crm").required = false;
-    }
-}
-
 function recoverPassword(){
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email-login").value;
     firebase.auth().sendPasswordResetEmail(email).then(() => {
         alert("Email de recuperação enviado com sucesso, caso não tenha recebido verifique o email digitado");
     });
 }
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user){
+        window.location.href = "./pages/home.html"
+    }
+})

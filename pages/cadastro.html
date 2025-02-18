@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-bt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <script src="/index.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <script src="https://www.gstatic.com/firebasejs/11.3.1/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/11.3.1/firebase-auth-compat.js"></script>
+        <script src="../firebase-init.js"></script>
+        <script src="cadastro.js"></script>
     <title>HealthTrack - Cadastro</title>
 </head>
 <body>
@@ -28,36 +31,22 @@
             </div>
 
             <input class="login-container-input" type="text" id="nome" placeholder="Name" required>        
-            <input class="login-container-input" type="text" id="cpf" onchange="validaCPF()"  placeholder="CPF" required>
-            <input class="login-container-input" type="number" id="crm" placeholder="CRM" hidden>        
+            <input class="login-container-input" type="text" id="cpf" placeholder="CPF" required>
+            <input class="login-container-input" minlength="6" maxlength="6" type="text" id="crm" placeholder="CRM" hidden>        
             <input class="login-container-input" type="text" id="hospital" placeholder="Hospital" required>       
             <input class="login-container-input" type="email" id="email-cadastro" placeholder="Email" required>       
-            <input class="login-container-input" type="password" id="senha" placeholder="Password" required>        
+            <input class="login-container-input" minlength="6" type="password" id="senha-cadastro" placeholder="Password (min 6 carac)" required>        
+            <input class="login-container-input" minlength="6" type="password" id="confirm-senha" placeholder="Confirm Password" required>        
             <button type="submit" id="submit">Cadastre-se</button>    
         </form>
     </div>
 
     <div class="register-container">
-        <button onclick="window.location.href = '/index.html'"><u> Login </u></button>
+        <button onclick="window.location.href = '../index.html'"><u> Login </u></button>
     </div>
 
 
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/11.3.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/11.3.1/firebase-auth-compat.js"></script>
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyCplKmCqMjFnuP0I5NYozYpGbedk2_55xY",
-        authDomain: "hackathon-substitutivo.firebaseapp.com",
-        projectId: "hackathon-substitutivo",
-        storageBucket: "hackathon-substitutivo.firebasestorage.app",
-        messagingSenderId: "176300653526",
-        appId: "1:176300653526:web:4ebbf87ecfcda30e730277"
-      };
-      firebase.initializeApp(firebaseConfig);
-
-
-</script>
 
 </html>
