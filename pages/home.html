@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <script src="https://www.gstatic.com/firebasejs/11.3.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.3.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore-compat.js"></script>
+    <script src="../firebase-init.js"></script>
+    <script src="home.js"></script>
+    <script src="../auth-guard.js"></script>
     <title>HealthTrack - Home</title>
 </head>
 <body>
+    <header>
+        <button type="button"onclick="logout()"> Logout</button>
+    </header>
     <h1>Bem - Vindo Usuário</h1>
+    <button type="button" onclick="">Adicionar</button>
+    <ol id="receitas"></ol>
+
+
 </body>
 </html>
